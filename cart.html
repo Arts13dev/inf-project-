@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Bag</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com/"
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700&family=Work+Sans:wght@400;500;700;900"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      /* Custom styles for the app */
+      body {
+        font-family: "Inter", "Work Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main application container -->
+    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden">
+      <div class="layout-container flex h-full grow flex-col">
+        <!-- Header section -->
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 px-4 py-3 sm:px-8 lg:px-12">
+          <div class="flex items-center gap-4 sm:gap-8">
+            <div class="flex items-center gap-2 sm:gap-4 text-slate-900">
+              <svg viewBox="0 0 48 48" fill="none" class="size-6 sm:size-8" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+              <h2 class="text-xl sm:text-2xl font-bold leading-tight tracking-[-0.015em]">Arts</h2>
+            </div>
+            <nav class="hidden sm:flex items-center gap-4 md:gap-6">
+              <a class="text-slate-900 text-sm font-medium leading-normal hover:text-red-500 transition-colors" href="#">New Arrivals</a>
+              <a class="text-slate-900 text-sm font-medium leading-normal hover:text-red-500 transition-colors" href="#">Accessories</a>
+              <a class="text-slate-900 text-sm font-medium leading-normal hover:text-red-500 transition-colors" href="#">Sale</a>
+            </nav>
+          </div>
+          <div class="flex flex-1 justify-end items-center gap-4 sm:gap-6">
+            <div class="flex gap-2">
+              <button class="flex size-10 sm:size-12 items-center justify-center rounded-full bg-slate-200 text-slate-900 hover:bg-red-500 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256"><path d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"></path></svg>
+              </button>
+              <button class="flex size-10 sm:size-12 items-center justify-center rounded-full bg-slate-200 text-slate-900 hover:bg-red-500 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"></path></svg>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main content section -->
+        <div class="px-4 py-5 flex-1 sm:px-8 lg:px-12">
+          <div class="layout-content-container flex flex-col max-w-4xl mx-auto flex-1">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center gap-2 p-4">
+              <a class="text-slate-500 text-sm font-medium leading-normal" href="#">Shopping Bag</a>
+              <span class="text-slate-500 text-sm font-medium leading-normal">/</span>
+              <span class="text-slate-900 text-sm font-medium leading-normal">Checkout</span>
+            </div>
+            
+            <h1 class="text-slate-900 text-3xl sm:text-4xl font-bold leading-tight px-4 pb-3 pt-5">Shopping Bag</h1>
+
+            <!-- Cart Items container -->
+            <div id="cart-items" class="flex flex-col gap-4 p-4">
+              <!-- Item 1 -->
+              <div class="cart-item flex flex-col sm:flex-row items-center gap-4 bg-white rounded-lg p-4 shadow-sm" data-price="50.00">
+                <div class="flex items-center gap-4 flex-1">
+                  <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 sm:size-20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvWRxpoY_BOO6J0k43JaGZvTFWpBiLnUMcpxPLa42yRcoYgrv5JSOgS7wZHI57OL5bf4WEe_xY7vnIGOGMYK6re64Csr3M3LLtA3OogHGvLJy-xU5N37UeQg93LX1qWpNVVXaUSISslfZ1bZ9E4JkDPOzz--xyCSPYP3pNHAxya3x1ynljksUcoDxYes55mre-9pY2jDmXv1KmZ_DKw-vnVbj1w_fsLxmnEKFdPM89YWiSLfgh1XrX4Bd8xv4SCINgChZyKpsTqA");'></div>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-slate-900 text-base font-medium line-clamp-1">Classic Cotton T-Shirt</p>
+                    <p class="text-slate-500 text-sm font-normal line-clamp-2">Size M</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+                  <div class="flex items-center gap-2 text-slate-900">
+                    <button class="quantity-btn decrement flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 transition-colors">-</button>
+                    <input class="quantity-input w-8 text-center bg-transparent border-none p-0 focus:outline-none focus:ring-0 text-base font-medium [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" value="2" min="1"/>
+                    <button class="quantity-btn increment flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 transition-colors">+</button>
+                  </div>
+                  <button class="remove-item-btn text-red-500 hover:text-red-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Item 2 -->
+              <div class="cart-item flex flex-col sm:flex-row items-center gap-4 bg-white rounded-lg p-4 shadow-sm" data-price="80.00">
+                <div class="flex items-center gap-4 flex-1">
+                  <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 sm:size-20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlAcxxYqz3xvvvkJYyh-Tbq1YHZv4Tsl3LI5GiOEk9X24O7kOcIvB97E9ZhFJUh4QfTWUHfMX6dICeHP5ekaLZ9WJvu7ZxwsJa5p74ztacSLxxiYdZvm2uCClQJyiVvjAl_YivnQjPuWVDTT9wXKju8vIUKMsMIG0uwTRHhNBxJxCz_-8AF7vXlXiQXHRuD26Rnv71kRj_B_R5Ryg3KOYVCl3mJhHgB-W_8wPQ8DFhjwu3bHpj5uVu0nBg3Cfh4u9yCemNuG54TQ");'></div>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-slate-900 text-base font-medium line-clamp-1">Comfortable Running Shoes</p>
+                    <p class="text-slate-500 text-sm font-normal line-clamp-2">Size 8</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+                  <div class="flex items-center gap-2 text-slate-900">
+                    <button class="quantity-btn decrement flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 transition-colors">-</button>
+                    <input class="quantity-input w-8 text-center bg-transparent border-none p-0 focus:outline-none focus:ring-0 text-base font-medium [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" value="1" min="1"/>
+                    <button class="quantity-btn increment flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 transition-colors">+</button>
+                  </div>
+                  <button class="remove-item-btn text-red-500 hover:text-red-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Item 3 -->
+              <div class="cart-item flex flex-col sm:flex-row items-center gap-4 bg-white rounded-lg p-4 shadow-sm" data-price="20.00">
+                <div class="flex items-center gap-4 flex-1">
+                  <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 sm:size-20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBx2uLxamCmtlnPXA5koX8_RVZNy0XRNSGkZ_SAVr_54IwZWyNw4d87P3KRWQJXxGNHK6quSDUu8g1-pLS7AUUd4rCM5ZWB_F78R0cnFgGNtT3-Ezf5G3YE9G-Woo-8d9HX4NI6orZwUhwXyQc5vU-gw7HCdr0jqbef5wVvjPFDNI-O_ryryR2DitYsjx27fDcnu51vFYgy7yFEAZSP6iwOUnmqoLTZ5A8oQlkMw47jIyLt_jcyDPFbLsFpS1bVSg5Q43oSFI8_eQ");'></div>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-slate-900 text-base font-medium line-clamp-1">Stylish Sunglasses</p>
+                    <p class="text-slate-500 text-sm font-normal line-clamp-2">One Size</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+                  <div class="flex items-center gap-2 text-slate-900">
+                    <button class="quantity-btn decrement flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 transition-colors">-</button>
+                    <input class="quantity-input w-8 text-center bg-transparent border-none p-0 focus:outline-none focus:ring-0 text-base font-medium [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" type="number" value="1" min="1"/>
+                    <button class="quantity-btn increment flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 transition-colors">+</button>
+                  </div>
+                  <button class="remove-item-btn text-red-500 hover:text-red-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="mt-8 p-4 bg-white rounded-lg shadow-sm">
+              <h2 class="text-slate-900 text-2xl font-bold leading-tight tracking-[-0.015em] pb-4">Order Summary</h2>
+              <div class="flex justify-between border-t border-slate-200 py-3">
+                <p class="text-slate-500 text-base font-normal">Subtotal</p>
+                <p id="subtotal" class="text-slate-900 text-base font-normal">$220.00</p>
+              </div>
+              <div class="flex justify-between border-t border-slate-200 py-3">
+                <p class="text-slate-500 text-base font-normal">Shipping</p>
+                <p class="text-slate-900 text-base font-normal">Free</p>
+              </div>
+              <div class="flex justify-between border-t border-slate-200 py-3">
+                <p class="text-slate-500 text-base font-normal">Taxes</p>
+                <p id="taxes" class="text-slate-900 text-base font-normal">$22.00</p>
+              </div>
+              <div class="flex justify-between border-t border-slate-400 py-3 mt-4">
+                <p class="text-slate-900 text-lg font-bold">Total</p>
+                <p id="total" class="text-slate-900 text-lg font-bold">$242.00</p>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 px-4 py-6 justify-end">
+              <button id="checkoutBtn" class="flex w-full sm:w-auto cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-red-500 text-white text-base font-bold tracking-[0.015em] hover:bg-red-600 transition-colors">
+                <span class="truncate">Checkout</span>
+              </button>
+              <button onclick="showNotification('Continue shopping...')" class="flex w-full sm:w-auto cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-slate-200 text-slate-900 text-base font-bold tracking-[0.015em] hover:bg-slate-300 transition-colors">
+                <span class="truncate" onclick="window.location.href='product.html'">Continue Shopping</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Notification Box -->
+    <div id="notification-box" class="fixed bottom-4 right-4 p-4 rounded-lg shadow-lg hidden transition-transform transform duration-300">
+      <p id="notification-message" class="text-white"></p>
+    </div>
+
+    <script>
+      // JavaScript for dynamic cart functionality
+      document.addEventListener('DOMContentLoaded', () => {
+  const cartItemsContainer = document.getElementById('cart-items');
+  const subtotalElement = document.getElementById('subtotal');
+  const taxesElement = document.getElementById('taxes');
+  const totalElement = document.getElementById('total');
+  const TAX_RATE = 0.10; // 10% tax rate
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function renderCart() {
+    cartItemsContainer.innerHTML = '';
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      updateSummary();
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const cartItem = document.createElement('div');
+      cartItem.className = 'flex items-center justify-between py-4 border-b';
+      cartItem.innerHTML = `
+        <div class="flex items-center gap-4">
+          <img src="${item.image || 'https://placehold.co/80x80'}" alt="${item.name}" class="w-20 h-20 object-cover rounded">
+          <div>
+            <p class="font-medium">${item.name}</p>
+            <p class="text-slate-500">Price: R${item.price.toFixed(2)}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <input type="number" value="${item.quantity}" min="1" class="w-16 border rounded px-2 py-1 quantity-input" data-index="${index}">
+          <button class="text-red-500 remove-item-btn" data-index="${index}">Remove</button>
+        </div>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+    });
+    updateSummary();
+  }
+
+  // Function to show a custom notification message
+  function showNotification(message, type = 'info') {
+    const notificationBox = document.getElementById('notification-box');
+    const notificationMessage = document.getElementById('notification-message');
+    notificationMessage.textContent = message;
+    notificationBox.className = `fixed bottom-4 right-4 p-4 rounded-lg shadow-lg transition-transform transform duration-300 bg-${type === 'success' ? 'green' : 'red'}-500`;
+    notificationBox.classList.remove('hidden');
+    setTimeout(() => {
+      notificationBox.classList.add('hidden');
+    }, 3000);
+  }
+
+  // Function to update the order summary
+  function updateSummary() {
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const taxes = subtotal * TAX_RATE;
+    const total = subtotal + taxes;
+
+    subtotalElement.textContent = `R${subtotal.toFixed(2)}`;
+    taxesElement.textContent = `R${taxes.toFixed(2)}`;
+    totalElement.textContent = `R${total.toFixed(2)}`;
+  }
+
+  // Add event listeners for all cart items
+  cartItemsContainer.addEventListener('click', (event) => {
+    if (event.target.classList.contains('remove-item-btn')) {
+      const index = event.target.dataset.index;
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+  });
+
+  cartItemsContainer.addEventListener('input', (event) => {
+    if (event.target.classList.contains('quantity-input')) {
+      const index = event.target.dataset.index;
+      cart[index].quantity = parseInt(event.target.value, 10);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateSummary();
+    }
+  });
+
+  document.getElementById('checkout-btn').addEventListener('click', async () => {
+    if (cart.length === 0) {
+      showNotification('Your cart is empty.', 'error');
+      return;
+    }
+    const response = await fetch('orders.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cart })
+    });
+    const result = await response.json();
+    if (result.success) {
+      localStorage.removeItem('cart');
+      showNotification('Checkout successful! Your order has been placed.', 'success');
+      window.location.href = 'delivery.html';
+    } else {
+      showNotification('Checkout failed. Please try again.', 'error');
+    }
+  });
+
+  renderCart();
+});
+    </script>
+  </body>
+</html>

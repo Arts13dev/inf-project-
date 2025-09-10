@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Simple style for active tab */
+        .sidebar-link.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        /* Hide all panels by default */
+        .content-panel {
+            display: none;
+        }
+        /* Show the active panel */
+        .content-panel.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-gray-800 text-white min-h-screen p-4">
+        <h1 class="text-2xl font-bold mb-8">Admin Panel</h1>
+        <nav>
+            <a href="#" class="sidebar-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 active" data-target="dashboard">Dashboard</a>
+            <a href="#" class="sidebar-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" data-target="products">Products</a>
+            <a href="#" class="sidebar-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" data-target="orders">Orders</a>
+            <a href="#" class="sidebar-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" data-target="customers">Customers</a>
+            <a href="#" class="sidebar-link block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" data-target="reviews">Reviews</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+        <!-- Dashboard Panel -->
+        <div id="dashboard" class="content-panel active">
+            <h2 class="text-3xl font-bold mb-6">Dashboard Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Stats cards will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Products Panel -->
+        <div id="products" class="content-panel">
+            <h2 class="text-3xl font-bold mb-6">Product Management</h2>
+            <!-- Add Product Form -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Add New Product</h3>
+                <form id="addProductForm" enctype="multipart/form-data">
+                    <!-- Form fields are the same as your previous version -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Product Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        </div>
+                        <div>
+                            <label for="price" class="block text-sm font-medium text-gray-700">Price (R)</label>
+                            <input type="number" id="price" name="price" step="0.01" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea id="description" name="description" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required></textarea>
+                        </div>
+                        <div>
+                            <label for="stock" class="block text-sm font-medium text-gray-700">Stock Quantity</label>
+                            <input type="number" id="stock" name="stock" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        </div>
+                        <div>
+                            <label for="image" class="block text-sm font-medium text-gray-700">Product Image</label>
+                            <input type="file" id="image" name="image" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100" required>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 font-semibold">Upload Product</button>
+                    </div>
+                </form>
+                <div id="form-message" class="mt-4 text-center"></div>
+            </div>
+            <!-- Existing Products Table -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold mb-4">Existing Products</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="py-2 px-4">Image</th>
+                                <th class="py-2 px-4">Name</th>
+                                <th class="py-2 px-4">Price</th>
+                                <th class="py-2 px-4">Stock</th>
+                                <th class="py-2 px-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                            <!-- Product rows will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Panel -->
+        <div id="orders" class="content-panel">
+            <h2 class="text-3xl font-bold mb-6">Order Management</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                 <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="py-2 px-4">Order ID</th>
+                                <th class="py-2 px-4">Customer ID</th>
+                                <th class="py-2 px-4">Product ID</th>
+                                <th class="py-2 px-4">Quantity</th>
+                                <th class="py-2 px-4">Status</th>
+                                <th class="py-2 px-4">Date</th>
+                                <th class="py-2 px-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            <!-- Order rows will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customers Panel -->
+        <div id="customers" class="content-panel">
+            <h2 class="text-3xl font-bold mb-6">Customer Management</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <!-- Customer table will go here -->
+            </div>
+        </div>
+
+        <!-- Reviews Panel -->
+        <div id="reviews" class="content-panel">
+            <h2 class="text-3xl font-bold mb-6">Review Management</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <!-- Reviews table will go here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.sidebar-link');
+            const panels = document.querySelectorAll('.content-panel');
+
+            // --- TAB NAVIGATION LOGIC ---
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Deactivate all links and panels
+                    links.forEach(l => l.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    // Activate the clicked link and corresponding panel
+                    const targetId = this.dataset.target;
+                    this.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+
+                    // Load content for the activated panel
+                    switch(targetId) {
+                        case 'products':
+                            loadProducts();
+                            break;
+                        case 'orders':
+                            loadOrders();
+                            break;
+                        // Add cases for customers and reviews here
+                    }
+                });
+            });
+
+            // --- PRODUCT MANAGEMENT LOGIC ---
+            const addProductForm = document.getElementById('addProductForm');
+            const formMessage = document.getElementById('form-message');
+
+            addProductForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                formMessage.textContent = 'Uploading...';
+                const formData = new FormData(this);
+
+                fetch('upload_product.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        formMessage.textContent = data.message;
+                        formMessage.className = 'mt-4 text-center text-green-600';
+                        addProductForm.reset();
+                        loadProducts(); // Refresh the product list
+                    } else {
+                        formMessage.textContent = 'Error: ' + data.message;
+                        formMessage.className = 'mt-4 text-center text-red-600';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    formMessage.textContent = 'An unexpected error occurred.';
+                });
+            });
+
+            function loadProducts() {
+                const productsTableBody = document.getElementById('products-table-body');
+                fetch('products.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        productsTableBody.innerHTML = ''; // Clear list
+                        if (data.success && data.products.length > 0) {
+                            data.products.forEach(product => {
+                                productsTableBody.innerHTML += `
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4"><img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover rounded"></td>
+                                        <td class="py-2 px-4 font-medium">${product.name}</td>
+                                        <td class="py-2 px-4">R ${product.price}</td>
+                                        <td class="py-2 px-4">${product.stock}</td>
+                                        <td class="py-2 px-4">
+                                            <button class="text-blue-500 hover:underline mr-2">Edit</button>
+                                            <button class="text-red-500 hover:underline">Delete</button>
+                                        </td>
+                                    </tr>
+                                `;
+                            });
+                        } else {
+                            productsTableBody.innerHTML = '<tr><td colspan="5" class="text-center py-4">No products found.</td></tr>';
+                        }
+                    });
+            }
+
+            // --- ORDER MANAGEMENT LOGIC ---
+            function loadOrders() {
+                const ordersTableBody = document.getElementById('orders-table-body');
+                fetch('orders.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        ordersTableBody.innerHTML = ''; // Clear list
+                        if (data.success && data.orders.length > 0) {
+                            data.orders.forEach(order => {
+                                ordersTableBody.innerHTML += `
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4">${order.id}</td>
+                                        <td class="py-2 px-4">${order.user_id}</td>
+                                        <td class="py-2 px-4">${order.product_id}</td>
+                                        <td class="py-2 px-4">${order.quantity}</td>
+                                        <td class="py-2 px-4">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                ${order.status}
+                                            </span>
+                                        </td>
+                                        <td class="py-2 px-4">${new Date(order.created_at).toLocaleDateString()}</td>
+                                        <td class="py-2 px-4">
+                                            <button class="text-blue-500 hover:underline">Update Status</button>
+                                        </td>
+                                    </tr>
+                                `;
+                            });
+                        } else {
+                            ordersTableBody.innerHTML = '<tr><td colspan="7" class="text-center py-4">No orders found.</td></tr>';
+                        }
+                    });
+            }
+
+            // Initial load for the default panel
+            loadProducts(); // Or load dashboard stats
+        });
+    </script>
+</body>
+</html>
