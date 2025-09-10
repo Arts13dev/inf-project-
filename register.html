@@ -55,135 +55,147 @@
             </div>
           </div>
         </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
-            <h2 class="text-[#181111] tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-3 pt-5">Create Your Account</h2>
-            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-              <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#181111] text-base font-medium leading-normal pb-2">Full Name</p>
-                <input
-                  placeholder="Enter your full name"
-                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181111] focus:outline-0 focus:ring-0 border border-[#e5dcdc] bg-white focus:border-[#e5dcdc] h-14 placeholder:text-[#886364] p-[15px] text-base font-normal leading-normal"
-                />
-              </label>
-            </div>
-            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-              <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#181111] text-base font-medium leading-normal pb-2">Email</p>
-                <input
-                  placeholder="Enter your email"
-                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181111] focus:outline-0 focus:ring-0 border border-[#e5dcdc] bg-white focus:border-[#e5dcdc] h-14 placeholder:text-[#886364] p-[15px] text-base font-normal leading-normal"
-                />
-              </label>
-            </div>
-            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-              <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#181111] text-base font-medium leading-normal pb-2">Password</p>
-                <input
-                  placeholder="Enter your password"
-                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181111] focus:outline-0 focus:ring-0 border border-[#e5dcdc] bg-white focus:border-[#e5dcdc] h-14 placeholder:text-[#886364] p-[15px] text-base font-normal leading-normal"
-                />
-              </label>
-            </div>
-            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-              <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#181111] text-base font-medium leading-normal pb-2">Confirm Password</p>
-                <input
-                  placeholder="Confirm your password"
-                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#181111] focus:outline-0 focus:ring-0 border border-[#e5dcdc] bg-white focus:border-[#e5dcdc] h-14 placeholder:text-[#886364] p-[15px] text-base font-normal leading-normal"
-                />
-              </label>
-            </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-14 justify-between">
-              <p class="text-[#181111] text-base font-normal leading-normal flex-1 truncate">I agree to the terms and conditions</p>
-              <div class="shrink-0">
-                <div class="flex size-7 items-center justify-center">
+        <div class="flex flex-1 justify-center px-40 py-5">
+          <div class="layout-content-container flex w-[512px] max-w-[512px] flex-col py-5 max-w-[960px] flex-1">
+            <h2 class="text-[#181111] tracking-light px-4 pb-3 pt-5 text-center text-[28px] font-bold leading-tight">Create Your Account</h2>
+            <form id="registerForm">
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                <label class="flex min-w-40 flex-1 flex-col">
+                  <p class="pb-2 text-base font-medium leading-normal text-[#181111]">Full Name</p>
                   <input
-                    type="checkbox"
-                    class="h-5 w-5 rounded border-[#e5dcdc] border-2 bg-transparent text-[#e82630] checked:bg-[#e82630] checked:border-[#e82630] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#e5dcdc] focus:outline-none"
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    placeholder="Enter your full name"
+                    class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-[#e5dcdc] bg-white p-[15px] text-base font-normal leading-normal text-[#181111] placeholder:text-[#886364] focus:border-[#e5dcdc] focus:outline-0 focus:ring-0"
+                    required
                   />
+                </label>
+              </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                <label class="flex min-w-40 flex-1 flex-col">
+                  <p class="pb-2 text-base font-medium leading-normal text-[#181111]">Email</p>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-[#e5dcdc] bg-white p-[15px] text-base font-normal leading-normal text-[#181111] placeholder:text-[#886364] focus:border-[#e5dcdc] focus:outline-0 focus:ring-0"
+                    required
+                  />
+                </label>
+              </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                <label class="flex min-w-40 flex-1 flex-col">
+                  <p class="pb-2 text-base font-medium leading-normal text-[#181111]">Password</p>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-[#e5dcdc] bg-white p-[15px] text-base font-normal leading-normal text-[#181111] placeholder:text-[#886364] focus:border-[#e5dcdc] focus:outline-0 focus:ring-0"
+                    required
+                  />
+                </label>
+              </div>
+              <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                <label class="flex min-w-40 flex-1 flex-col">
+                  <p class="pb-2 text-base font-medium leading-normal text-[#181111]">Confirm Password</p>
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Confirm your password"
+                    class="form-input flex h-14 min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-[#e5dcdc] bg-white p-[15px] text-base font-normal leading-normal text-[#181111] placeholder:text-[#886364] focus:border-[#e5dcdc] focus:outline-0 focus:ring-0"
+                    required
+                  />
+                </label>
+              </div>
+              <div class="flex items-center justify-between gap-4 bg-white px-4 min-h-14">
+                <label for="terms" class="flex-1 truncate text-base font-normal leading-normal text-[#181111]">I agree to the terms and conditions</label>
+                <div class="shrink-0">
+                  <div class="flex size-7 items-center justify-center">
+                    <input
+                      id="terms"
+                      name="terms"
+                      type="checkbox"
+                      class="h-5 w-5 rounded border-2 border-[#e5dcdc] bg-transparent text-[#e82630] checked:border-[#e82630] checked:bg-[#e82630] checked:bg-[image:--checkbox-tick-svg] focus:border-[#e5dcdc] focus:outline-none focus:ring-0"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="flex px-4 py-3">
-              <button
-                id="signUpBtn"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 flex-1 bg-[#e82630] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-              >
-                <span class="truncate">Sign Up</span>
-              </button>
-            </div>
-            <div id="errorMsg" class="text-red-600 text-sm font-medium px-4 py-2"></div>
-            <p class="text-[#886364] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center">Already have an account?</p>
-            <p id="loginText" class="text-[#886364] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center underline cursor-pointer">Log in</p>
+              <div class="flex px-4 py-3">
+                <button
+                  id="signUpBtn"
+                  type="submit"
+                  class="flex h-10 min-w-[84px] max-w-[480px] flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#e82630] px-4 text-sm font-bold leading-normal tracking-[0.015em] text-white"
+                >
+                  <span class="truncate">Sign Up</span>
+                </button>
+              </div>
+              <div id="errorMsg" class="px-4 py-2 text-sm font-medium text-red-600"></div>
+            </form>
+            <p class="px-4 pb-3 pt-1 text-center text-sm font-normal leading-normal text-[#886364]">Already have an account?</p>
+            <p id="loginText" class="cursor-pointer px-4 pb-3 pt-1 text-center text-sm font-normal leading-normal text-[#886364] underline">Log in</p>
           </div>
         </div>
       </div>
     </div>
     <script>
-      document.getElementById('homeBtn').addEventListener('click', function(e) {
+      document.getElementById('homeBtn').addEventListener('click', function (e) {
         e.preventDefault();
         window.location.href = 'home.html';
       });
-      document.getElementById('loginBtn').addEventListener('click', function(e) {
+      document.getElementById('loginBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = 'login.html';
+      });
+      document.getElementById('shopBtn').addEventListener('click', function (e) {
         e.preventDefault();
         window.location.href = 'product.html';
       });
-      document.getElementById('shopBtn').addEventListener('click', function(e) {
+
+      document.getElementById('registerForm').addEventListener('submit', function (e) {
         e.preventDefault();
-        window.location.href = 'product.html';
-      });
 
-      document.getElementById('signUpBtn').addEventListener('click', function(e) {
-    e.preventDefault();
+        const form = e.target;
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const errorMsg = document.getElementById('errorMsg');
+        errorMsg.textContent = '';
 
-    // Get input values
-    const fullNameInput = document.querySelector('input[placeholder="Enter your full name"]');
-    const emailInput = document.querySelector('input[placeholder="Enter your email"]');
-    const passwordInput = document.querySelector('input[placeholder="Enter your password"]');
-    const confirmPasswordInput = document.querySelector('input[placeholder="Confirm your password"]');
-    const termsChecked = document.querySelector('input[type="checkbox"]').checked;
-    const errorMsg = document.getElementById('errorMsg');
-    errorMsg.textContent = '';
-
-    const fullName = fullNameInput.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
-
-    // Client-side validation (keep this for better user experience)
-    if (!fullName) { errorMsg.textContent = 'Full Name is required.'; return; }
-    if (!email) { errorMsg.textContent = 'Email is required.'; return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errorMsg.textContent = 'Please enter a valid email address.'; return; }
-    if (!password) { errorMsg.textContent = 'Password is required.'; return; }
-    if (password.length < 6) { errorMsg.textContent = 'Password must be at least 6 characters.'; return; }
-    if (password !== confirmPassword) { errorMsg.textContent = 'Passwords do not match.'; return; }
-    if (!termsChecked) { errorMsg.textContent = 'You must agree to the terms and conditions.'; return; }
-
-    // If validation passes, send data to the server
-    const formData = new FormData();
-    formData.append('fullName', fullName);
-    formData.append('email', email);
-    formData.append('password', password);
-
-    fetch('register.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert(data.message);
-            window.location.href = 'login.html';
-        } else {
-            errorMsg.textContent = data.message;
+        if (passwordInput.value !== confirmPasswordInput.value) {
+          errorMsg.textContent = 'Passwords do not match.';
+          return;
         }
-    })
-    .catch(error => {
-        errorMsg.textContent = 'An error occurred. Please try again.';
-        console.error('Error:', error);
-    });
-});
+
+        const formData = new FormData(form);
+
+        fetch('register.php', {
+          method: 'POST',
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert(data.message);
+              window.location.href = 'login.html';
+            } else {
+              errorMsg.textContent = data.message;
+            }
+          })
+          .catch((error) => {
+            errorMsg.textContent = 'An error occurred. Please try again.';
+            console.error('Error:', error);
+          });
+      });
+
+      document.getElementById('loginText').addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = 'login.html';
+      });
+    </script>
 
       document.getElementById('loginText').addEventListener('click', function(e) {
         e.preventDefault();
