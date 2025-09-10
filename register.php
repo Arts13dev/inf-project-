@@ -38,7 +38,8 @@ $stmt->bind_param("sss", $fullName, $email, $hashedPassword);
 if ($stmt->execute()) {
     echo json_encode(['success' => true, 'message' => 'Registration successful.']);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Registration failed. Please try again.']);
+    // Detailed error message
+    echo json_encode(['success' => false, 'message' => 'Registration failed: ' . $stmt->error]);
 }
 
 $stmt->close();
